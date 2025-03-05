@@ -2,6 +2,7 @@ import 'perguntas.dart';
 
 class Helper {
   int _numQuAtual = 0;
+  int resp = 0;
   List<Perguntas> _bancoDePerguntas = [
     Perguntas(q: 'O metrô é um dos meios de transporte mais seguros do mundo.', r: true),
     Perguntas(q: 'A culinária brasileira é uma das melhores do mundo.', r: true),
@@ -43,6 +44,14 @@ class Helper {
     }
   }
 
+  int contadorDeAcertos () {
+    return resp++;
+  }
+
+  resetandoAcertos(){
+    resp = 0;
+
+  }
   resetandoQuiz() {
     _numQuAtual = 0;
   }
