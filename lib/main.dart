@@ -32,13 +32,16 @@ class _QuizPageState extends State<QuizPage> {
 
     setState(() {
       if (helper.conferindoExecucao()) {
-        Alert(context: context, title: "Fim do QUIZ", desc: "Você chegou ao FIM do QUIZ.").show();
+        Alert(context: context, title: "Fim do QUIZ", desc: "Você acertou ${helper.contadorDeAcertos()} questões.").show();
         helper.resetandoQuiz();
         marcadorDePontos.clear();
+        helper.contadorDeAcertos();
+        helper.resetandoAcertos();
 
       } else {
         if (confere == helper.getBancoDeRespostas()) {
           marcadorDePontos.add(Icon(Icons.check, color: Colors.green,));
+          helper.contadorDeAcertos();
         } else {
           marcadorDePontos.add(Icon(Icons.close, color: Colors.red,));
         }
@@ -87,6 +90,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
+
                 conferirRespostas(true);
               },
             ),
